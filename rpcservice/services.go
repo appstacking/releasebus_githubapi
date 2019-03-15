@@ -7,7 +7,7 @@ type GithubApiService struct{}
 func (g *GithubApiService) LatestRepoVersion(in *RepoParam, out *RepoParam) error {
 	version, date, err := githubapi.GetLatestVersion(in.Owner, in.Repo)
 	if err != nil {
-		return nil
+		return err
 	}
 
 	out.LatestVersion = version
