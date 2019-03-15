@@ -1,0 +1,16 @@
+package rpcservice
+
+import "go.xiaosongfu.com/releasebus/releasebus_service_githubapi/githubapi"
+
+type GithubApiService struct{}
+
+func (g *GithubApiService) LatestRepoVersion(in *RepoParam, out *RepoParam) error {
+	version, date, err := githubapi.GetLatestVersion(in.Owner, in.Repo)
+	if err != nil {
+		return nil
+	}
+
+	out.LatestVersion = version
+	out.ReleaseDate = date
+	return nil
+}
