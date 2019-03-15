@@ -22,6 +22,8 @@ func main() {
 		panic(err)
 	}
 
+	defer listener.Close()
+
 	fmt.Println(asciibot.Random())
 	log.Println("server started.enjoy!")
 
