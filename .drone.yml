@@ -10,7 +10,7 @@ trigger:
 
 steps:
   - name: build
-    image: golang:1.12
+    image: golang:1.12.1
     command:
       - go mod tidy -v
       - go test ./... -v
