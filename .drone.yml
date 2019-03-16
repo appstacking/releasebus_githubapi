@@ -8,11 +8,15 @@ trigger:
     - push
     - pull_request
 
+workspace:
+  base: /go
+  path: src/go.xiaosongfu.com/releasebus/releasebus_service_githubapi
+
 steps:
   - name: build
     image: golang:1.12.1
     command:
-#      - go mod tidy -v
+      - go mod tidy -v
       - go test ./... -v
       - go build -x
 
