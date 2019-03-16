@@ -14,7 +14,7 @@ workspace:
 
 steps:
   - name: build
-    image: golang
+    image: golang:1.12.1
     command:
       - go mod tidy -v
       - go test ./... -v
