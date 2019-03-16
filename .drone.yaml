@@ -1,0 +1,27 @@
+kind: pipeline
+name: default
+
+tragger:
+  branch:
+    - master
+  event:
+    - pull_request
+
+steps:
+  - name: build
+    image: golang:1.12
+    command:
+      - go mod tidy -v
+      - go test ./... -v
+      - go build -x
+
+  - name: docker
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: aliyun_username
+      password:
+        from_secret: aliyun_password
+      registry: registry.cn-shenzhen.aliyuncs.com
+      repo: registry.cn-shenzhen.aliyuncs.com/paperplaneapps/releasebus_service_githubapi
+      tags: '0.0.1'
