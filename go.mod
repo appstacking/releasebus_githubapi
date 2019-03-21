@@ -1,4 +1,4 @@
-module go.xiaosongfu.com/releasebus/releasebus_service_githubapi
+module github.com/appstacking/releasebus_service_githubapi
 
 go 1.12
 
