@@ -1,6 +1,6 @@
 package rpcservice
 
-import "github.com/appstacking/releasebus_service_githubapi/githubapi"
+import "github.com/appstacking/releasebus_githubapi/githubapi"
 
 type GithubApiService struct{}
 

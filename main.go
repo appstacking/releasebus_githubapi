@@ -7,7 +7,7 @@ import (
 	"net"
 	"net/rpc"
 
-	"github.com/appstacking/releasebus_service_githubapi/rpcservice"
+	"github.com/appstacking/releasebus_githubapi/rpcservice"
 )
 
 func main() {

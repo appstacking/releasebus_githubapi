@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: releasebus-githubapi
+  namespace: appstacking
+spec:
+  revisionHistoryLimit: 6
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: releasebus-githubapi
+        ns: appstacking
+    spec:
+      containers:
+        - name: releasebus-githubapi
+          image: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus_githubapi:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - name: rpc
+              containerPort: 12001
+              protocol: TCP
+  selector:
+    matchLabels:
+      app: releasebus-githubapi
+      ns: appstacking
