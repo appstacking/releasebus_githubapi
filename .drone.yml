@@ -18,15 +18,15 @@ steps:
     commands:
       - go mod tidy -v
       - go test ./... -v
-#      - go build -x
+      - go build -x
 
-#  - name: docker
-#    image: plugins/docker
-#    settings:
-#      username:
-#        from_secret: aliyun_username
-#      password:
-#        from_secret: aliyun_password
-#      registry: registry.cn-shenzhen.aliyuncs.com
-#      repo: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus_githubapi
-#      tags: '0.0.1'
+  - name: docker
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: aliyun_username
+      password:
+        from_secret: aliyun_password
+      registry: registry.cn-shenzhen.aliyuncs.com
+      repo: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus_githubapi
+      tags: '0.0.1'
