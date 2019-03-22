@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: rpc
-              containerPort: 12001
+              containerPort: 12004
               protocol: TCP
   selector:
     matchLabels:

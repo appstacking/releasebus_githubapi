@@ -7,8 +7,8 @@ spec:
   type: ClusterIP
   ports:
     - name: rpc
-      port: 80
-      targetPort: 12001
+      port: 83
+      targetPort: 12004
       protocol: TCP
   selector:
     app: releasebus-githubapi

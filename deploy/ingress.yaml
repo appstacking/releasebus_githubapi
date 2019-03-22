@@ -11,4 +11,4 @@ spec:
           - path: /releasebus/githubapi
             backend:
               serviceName: releasebus-githubapi
-              servicePort: 80
+              servicePort: 83

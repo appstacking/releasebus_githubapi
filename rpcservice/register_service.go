@@ -4,7 +4,7 @@ import (
 	"net/rpc"
 )
 
-const serviceName = "com.xiaosongfu.rb.svc.githubapi"
+const serviceName = "releasebus.githubapi.service"
 
 type GithubApiServiceInterface interface {
 	LatestRepoVersion(*RepoParam, *RepoParam) error

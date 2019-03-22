@@ -6,6 +6,6 @@ ADD ./releasebus_githubapi ./
 
 RUN ls -la
 
-EXPOSE 12001
+EXPOSE 12004
 
 CMD ["./releasebus_githubapi"]
