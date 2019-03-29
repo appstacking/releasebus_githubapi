@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: releasebus-githubapi
+  name: releasebus-githubapi-service
   namespace: appstacking
 spec:
   type: ClusterIP
   ports:
     - name: rpc
-      port: 83
-      targetPort: 12004
+      port: 80
+      targetPort: rpc
       protocol: TCP
   selector:
     app: releasebus-githubapi

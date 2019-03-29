@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/mattes/go-asciibot"
 	"log"
 	"net"
 	"net/rpc"
 
 	"github.com/appstacking/releasebus_githubapi/rpcservice"
+	"github.com/xiaosongfu/asciibot"
 )
 
 func main() {

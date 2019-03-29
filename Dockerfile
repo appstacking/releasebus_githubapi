@@ -1,11 +1,11 @@
-FROM alpine:latest
+FROM centos:7
 
 WORKDIR /app
 
-ADD ./releasebus_githubapi ./
+ADD ./App ./
 
-RUN ls -la
+#RUN ls -la
 
 EXPOSE 12004
 
-CMD ["./releasebus_githubapi"]
+CMD ["./App"]
