@@ -29,4 +29,4 @@ steps:
         from_secret: aliyun_password
       registry: registry.cn-shenzhen.aliyuncs.com
       repo: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus-githubapi
-      tags: '0.0.1'
+      tags: '0.0.2'
