@@ -7,8 +7,8 @@ import (
 
 // 测试获取 repo 的最新版本
 func TestGetLatestVersion(t *testing.T) {
-	t.Run("normal", testGetLatestVersionNormal)
-	t.Run("repo_not_found", testGetLatestVersionRepoNotFound)
+	t.Run("testGetLatestVersionNormal", testGetLatestVersionNormal)
+	t.Run("testGetLatestVersionRepoNotFound", testGetLatestVersionRepoNotFound)
 }
 
 // 测试正常获取 repo 的最新版本的情况
@@ -27,9 +27,9 @@ func testGetLatestVersionNormal(t *testing.T) {
 		},
 		{
 			owner:       "xiaosongfu",
-			repo:        "go-asciibot",
-			wantVersion: "v0.0.1",
-			wantDate:    "2019-03-15T04:58:21Z",
+			repo:        "asciibot",
+			wantVersion: "v1.0.1",
+			wantDate:    "2019-03-26T09:31:47Z",
 		},
 	}
 
