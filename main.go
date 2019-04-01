@@ -25,6 +25,7 @@ func main() {
 	defer listener.Close()
 
 	fmt.Println(asciibot.Random())
+	log.Printf("server info --> Version: %s, GitCommit: %s, BuildDate: %s, GoVersion: %s\n", Version, GitCommit, BuildDate, GoVersion)
 	log.Println("server started.enjoy!")
 
 	for {

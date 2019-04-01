@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: releasebus-githubapi
-          image: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus-githubapi:0.0.2
+          image: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus-githubapi:insert_version_here
           imagePullPolicy: Always
           ports:
             - name: rpc

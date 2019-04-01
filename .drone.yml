@@ -8,7 +8,15 @@ trigger:
     - push
     - pull_request
 
+clone:
+  depth: 50
+
 steps:
+  - name: fetch
+    image: docker:git
+    commands:
+      - git fetch --tags
+
   - name: build
     image: golang:1.12
     environment:
@@ -16,9 +24,15 @@ steps:
       GOARCH: amd64
       GOPROXY: https://goproxy.io
     commands:
+      # docker tag
+      - export dockerTag=`git describe --tags | cut -c 2-`
+      - echo $dockerTag > .tags
+      # update deployment file
+      - find 'deploy/deployment.yaml' | xargs perl -pi -e "s|insert_version_here|$dockerTag|g"
+      # go commands
       - go mod tidy -v
       - go test ./... -v
-      - go build -x -o App
+      - go build -x -ldflags "-X 'main.Version=$(git describe --tags --always | cut -c 1-)' -X 'main.GitCommit=$(git log -1 --pretty=format:"author:%an, date:%cd, commit:%h")' -X 'main.BuildDate=$(date "+%F %T")' -X 'main.GoVersion=$(go version | cut -c 12-)'" -o App
 
   - name: docker
     image: plugins/docker
@@ -29,4 +43,29 @@ steps:
         from_secret: aliyun_password
       registry: registry.cn-shenzhen.aliyuncs.com
       repo: registry.cn-shenzhen.aliyuncs.com/appstacking/releasebus-githubapi
-      tags: '0.0.2'
+#      tags: '0.0.2'
+
+  - name: scp
+    image: appleboy/drone-scp
+    settings:
+      host: 222.85.230.14
+      port: 13202
+      username:
+        from_secret: k8s_server_username
+      password:
+        from_secret: k8s_server_password
+      target: /root/droneci/releasebus-githubapi
+      source:
+        - deploy/deployment.yaml
+
+  - name: deploy
+    image: appleboy/drone-ssh
+    settings:
+      host: 222.85.230.14
+      port: 13202
+      username:
+        from_secret: k8s_server_username
+      password:
+        from_secret: k8s_server_password
+      script:
+        - kubectl apply -f /root/droneci/releasebus-githubapi/deploy/deployment.yaml
